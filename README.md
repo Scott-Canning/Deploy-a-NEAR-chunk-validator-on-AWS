@@ -1,5 +1,5 @@
 # Deploy a NEAR chunk validator on AWS
-### Step-by-step guide
+### A step-by-step guide
 
 ### Useful links:
 - [Shardnet Challenges](https://github.com/near/stakewars-iii/blob/main/challenges/001.md)
@@ -25,17 +25,19 @@ On the left-hand menu, select Instances and then select Launch Instances in the 
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179827736-59cd2bb3-c9c4-41b6-a0af-470b1e50d2e5.png">
 
-Scroll until you find the Ubuntu Server 20.04 operating system and select this option.![image](https://user-images.githubusercontent.com/34758484/179827808-799f5247-9c37-4a17-bcb0-89f5e91d2db0.png)
+Scroll until you find the Ubuntu Server 20.04 operating system and select this option.
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179827817-146e6959-c4f5-493a-9255-a9c21db266c2.png">
 
-**NOTE BEFORE PROCEEDING**: it’s worth understanding that the required EC2 instance type (t2.xlarge) to run a node has a fixed cost per hour and this cost can depend on which region you are running the instance in.
+
+**__NOTE BEFORE PROCEEDING__**: it’s worth understanding that the required EC2 instance type (t2.xlarge) to run a node has a fixed cost per hour and this cost can depend on which region you are running the instance in.
 
 For the US East (N. Virginia) region, the hourly costs are as follows:
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179827863-e651f566-1606-4fd9-bb56-4c3afddf7c45.png">
 
 500GB SSD storage adds an additional $47/month, for a total monthly cost of $185.49 to run an ‘on-demand’ t2.xlarge EC2 instance. There are options to ‘reserve’ instances for 1- or 3-year periods that lock you in to a lower monthly payment, but that configuration is beyond the scope of this guide.!
+
 
 On the following menu, check the t2.xlarge instance type, as this will provide us with the necessary specifications to run a chunk validator (4-core CPU, 8GB of memory). Select Review and Launch.
 
@@ -60,11 +62,9 @@ Check the checkbox next to your Instance ID in the Instances menu within EC2 and
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179828839-6b70f1aa-e2a9-4ddb-b4fa-00afdb1f7e64.png">
 
-1. Open a new terminal and change the directory to the directory you stored your key pair in when launching your EC2 instance. E.g., `cd /<path>/<key_pair_directory>`
+1. Open a new terminal and change the directory to the directory you stored your key pair in when launching your EC2 instance. If you’re uncertain of how to change directories look [here](https://www.rapidtables.com/code/linux/cd.html) (other useful commands to  learn include: pwd, ls, rm, rm -r, cd, and cd ..). E.g.: `cd /<path>/<key_pair_directory>`
 
-If you’re uncertain of how to change directories, Google how to change directories in your UNIX shell via the command line (other useful commands to learn include: pwd, ls, rm, rm -r, cd, and cd ..).
-
-2. In the ‘SHH Client’ section copy and paste the command in #3 into your terminal and hit enter. E.g., `chmod 400 <key_pair_name>.pem`
+2. In the ‘SHH Client’ section copy and paste the command in #3 into your terminal and hit enter. E.g.: `chmod 400 <key_pair_name>.pem`
 
 3. In the ‘SHH Client’ section copy and paste the command in the provided Example into your terminal and hit enter. E.g., `ssh -i "<key_pair_name>.pem " ubuntu@<public_DNS>`
 
@@ -72,3 +72,4 @@ If you’re uncertain of how to change directories, Google how to change directo
 
 
 ## 3) Setup your EC2 instance and install `near-cli`
+
