@@ -127,31 +127,39 @@ Check validators entering the validator set in the next epoch:
 The following steps are similar to those covered in [Challenge 2](https://github.com/near/stakewars-iii/blob/main/challenges/002.md)
 
 We created a t2.xlarge EC2 instance which has the correct specifications (4-core CPU, 8GB RAM, and 500GB SSD) to run a NEAR chunk validator. If you want to check for yourself run in your terminal:
+
 `lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
   && echo "Supported" \
   || echo "Not supported"`
 
 Install the necessary developer tooling:
+
 `sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo`
 
 Install Python pip:
+
 `sudo apt install python3-pip`
 
 Set the Python path configuration:
+
 `USER_BASE_BIN=$(python3 -m site --user-base)/bin`
 
 `export PATH="$USER_BASE_BIN:$PATH"`
 
 Install the Building environment:
+
 `sudo apt install clang build-essential make`
 
 Install Rust and package manager Cargo:
+
 `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
 Set the environment:
+
 `source $HOME/.cargo/env`
 
 Clone `nearcore` from NEAR's Github repo:
+
 `git clone https://github.com/near/nearcore`
 
 `cd nearcore`
@@ -159,32 +167,39 @@ Clone `nearcore` from NEAR's Github repo:
 `git fetch`
 
 Checkout the nearcore commit found in this [file](https://github.com/near/stakewars-iii/blob/main/challenges/commit.md):
+
 `git checkout <commit>`
 
-Compile `nearcore`:
+Compile nearcore:
+
 `cargo build -p neard --release --features shardnet`
 
 **NOTE:** Be patient as this will take several minutes at minimum.
 
 Initialize the working directory for the necessary validator configuration files:
+
 `./target/release/neard --home ~/.near init --chain-id shardnet --download-genesis`
 
 **NOTE:** Ensure you are in the `/nearcore` directory.
 
 Replace the config.json file:
+
 `rm ~/.near/config.json`
 
 `wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/shardnet/config.json`
 
 Start the node to begin downloading headers and then blocks:
+
 `cd ~/nearcore`
 
 `./target/release/neard --home ~/.near run`
 
 Once the blocks download to 100% login to your near account:
+
 `near login --walletUrl https://wallet.shardnet.near.org/`
 
 Since we don't have a GUI on our Ubuntu machine, copy and paste the link outputted by this command into your local browser and login to your shardnet accountId to grant access to the NEAR-CLI.
+
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179837874-ffe062b8-1148-4885-8c15-19392f6f0723.png">
 
 Once the browsers loads to a refused to connect page, return to your SSH session and enter your shardnet accountId `xxxx.shardnet.near` under the line 'Enter it here'.
