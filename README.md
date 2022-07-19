@@ -36,8 +36,7 @@ For the US East (N. Virginia) region, the hourly costs are as follows:
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179827863-e651f566-1606-4fd9-bb56-4c3afddf7c45.png">
 
-500GB SSD storage adds an additional $47/month, for a total monthly cost of $185.49 to run an ‘on-demand’ t2.xlarge EC2 instance. There are options to ‘reserve’ instances for 1- or 3-year periods that lock you in to a lower monthly payment, but that configuration is beyond the scope of this guide.!
-
+500GB SSD storage adds an additional $47/month, for a total monthly cost of $185.49 to run an ‘on-demand’ t2.xlarge EC2 instance. There are options to ‘reserve’ instances for 1- or 3-year periods that lock you in to a lower monthly payment, but that configuration is beyond the scope of this guide.
 
 On the following menu, check the t2.xlarge instance type, as this will provide us with the necessary specifications to run a chunk validator (4-core CPU, 8GB of memory). Select Review and Launch.
 
@@ -58,17 +57,17 @@ Congratulations! You have just launched an EC2 instance capable of running a chu
 
 ## 3) SSH into your EC2 instance
 
-Check the checkbox next to your Instance ID in the Instances menu within EC2 and select Connect. Within the Connect to Instance window, follow the steps under ‘SSH Client’ or following along with the simplified instruction I’ve laid out below.
+Check the checkbox next to your Instance ID in the Instances menu within EC2 and select Connect. Within the 'Connect to instance' window, follow the steps under the ‘SSH client’ section or following along with the simplified instructions I’ve laid out below.
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179828839-6b70f1aa-e2a9-4ddb-b4fa-00afdb1f7e64.png">
 
-1. Open a new terminal and change the directory to the directory you stored your key pair in when launching your EC2 instance. If you’re uncertain of how to change directories look [here](https://www.rapidtables.com/code/linux/cd.html) (other useful commands to  learn include: pwd, ls, rm, rm -r, cd, and cd ..). E.g.: `cd /<path>/<key_pair_directory>`
+1. Open a new terminal and change the directory to the directory you stored your key pair in when launching your EC2 instance. If you’re uncertain of how to change directories look [here](https://www.rapidtables.com/code/linux/cd.html) (other useful unix commands that are worth learning include: pwd, ls, rm, rm -r, cd, and cd ..). E.g.: `cd /<path>/<key_pair_directory>`
 
-2. In the ‘SHH Client’ section copy and paste the command in #3 into your terminal and hit enter. E.g.: `chmod 400 <key_pair_name>.pem`
+2. In the ‘SHH client’ section copy and paste the command in #3 into your terminal and hit enter. E.g.: `chmod 400 <key_pair_name>.pem`
 
-3. In the ‘SHH Client’ section copy and paste the command in the provided Example into your terminal and hit enter. E.g., `ssh -i "<key_pair_name>.pem " ubuntu@<public_DNS>`
+3. In the ‘SHH client’ section copy and paste the command in the provided Example into your terminal and hit enter. E.g.: `ssh -i "<key_pair_name>.pem " ubuntu@<public_DNS>`
 
-4. If it asks for access permission, type ‘yes’ and enter
+4. If it asks for access permission, type ‘yes’ and hit enter.
 
 
 ## 3) Setup your EC2 instance and install `near-cli`
