@@ -15,18 +15,18 @@ Before beginning, I highly recommend reading the following:
 - [StakeWars Rules](https://github.com/near/stakewars-iii/blob/main/Rules.md)
 
 
-## 1)	Create an AWS account
-
-We’ll be using AWS to host our validator. If you don’t have an existing AWS account, sign up for one [here](https://portal.aws.amazon.com/billing/signup#/start/email).
-
-AWS provides a diverse set of on-demand cloud microservices. The company typically offers free tiers for most services but given that resource demands change based on your use case, a credit card is required at account initiation so keep it nearby.
-
-
-## 2) Create a shardnet wallet
+## 1) Create a shardnet wallet
 
 Use the [Shardnet Wallet](https://wallet.shardnet.near.org/) link and use the `Create Account` button.
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179835560-21d7fd59-023f-4e8f-840e-d133a4019b17.png">
+
+
+## 2)	Create an AWS account
+
+We’ll be using AWS to host our validator. If you don’t have an existing AWS account, sign up for one [here](https://portal.aws.amazon.com/billing/signup#/start/email).
+
+AWS provides a diverse set of on-demand cloud microservices. The company typically offers free tiers for most services but given that resource demands change based on your use case, a credit card is required at account initiation so keep it nearby.
 
 
 ## 3) Set up and EC2 instance 
