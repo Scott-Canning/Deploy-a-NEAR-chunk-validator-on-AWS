@@ -208,7 +208,7 @@ Initialize the working directory for the necessary validator configuration files
 ```
 ./target/release/neard --home ~/.near init --chain-id shardnet --download-genesis
 ```
-<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180038822-d9f027b4-5eda-4fec-900a-0d10744f9672.png">
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180040230-e2ab8ad1-15e2-44e2-a9e6-85582346be97.png">
 
 
 Replace the config.json file:
