@@ -236,7 +236,7 @@ near login --walletUrl https://wallet.shardnet.near.org/
 
 Since we don't have a GUI on our Ubuntu machine, copy and paste the link outputted by this command into your local browser and login to your shardnet accountId to grant access to the NEAR-CLI.
 
-<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179837874-ffe062b8-1148-4885-8c15-19392f6f0723.png">
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180092627-7e8e6abf-2265-47e7-a2fa-660ded981af6.png">
 
 Once the browsers loads to a refused to connect page, return to your SSH session and enter your shardnet accountId `xxxx.shardnet.near` under the line 'Enter it here'.
 
