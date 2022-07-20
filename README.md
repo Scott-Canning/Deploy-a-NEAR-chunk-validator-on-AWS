@@ -354,6 +354,6 @@ near call <staking_pool_id> ping '{}' --accountId <accountId> --gas=300000000000
   
 Check [Shardnet Explorer](https://explorer.shardnet.near.org/) for your validator - it should be in a Proposal state awaiting to join the validator set in the next epoch. Congratulations, you have just set up a NEAR chunk validator!
 
-<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180092288-ca8bee6f-aed6-47f8-907f-aa24aae005cd.png">
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180092940-0469661f-eec2-4ff3-9132-b986d3cd8120.png">
 
 
