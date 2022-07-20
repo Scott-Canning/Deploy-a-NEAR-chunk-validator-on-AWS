@@ -43,14 +43,11 @@ Scroll until you find the Ubuntu Server 20.04 operating system and select this o
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179827817-146e6959-c4f5-493a-9255-a9c21db266c2.png">
 
-
-**__NOTE BEFORE PROCEEDING__**: it’s worth understanding that the required EC2 instance type (t2.xlarge) to run a node has a fixed cost per hour and this cost can depend on which region you are running the instance in.
+**__NOTE BEFORE PROCEEDING: it’s worth understanding that the required EC2 instance type (t2.xlarge) to run a node has a fixed cost per hour and this cost can depend on which region you are running the instance in. 500GB SSD storage adds an additional $47/month, for a total monthly cost of $185.49 to run an ‘on-demand’ t2.xlarge EC2 instance. There are options to ‘reserve’ instances for 1- or 3-year periods that lock you in to a lower monthly payment, but that configuration is beyond the scope of this guide.__**
 
 For the US East (N. Virginia) region, the hourly costs are as follows:
 
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/179827863-e651f566-1606-4fd9-bb56-4c3afddf7c45.png">
-
-500GB SSD storage adds an additional $47/month, for a total monthly cost of $185.49 to run an ‘on-demand’ t2.xlarge EC2 instance. There are options to ‘reserve’ instances for 1- or 3-year periods that lock you in to a lower monthly payment, but that configuration is beyond the scope of this guide.
 
 On the following menu, check the t2.xlarge instance type, as this will provide us with the necessary specifications to run a chunk validator (4-core CPU, 8GB of memory). Select Review and Launch.
 
@@ -85,7 +82,7 @@ Check the checkbox next to your Instance ID in the Instances menu within EC2 and
 
 You should now have remote access to an Ubuntu terminal on your EC2 instance! 
 
-**NOTE:** You may want to open a second (or third!) SSH session in a different terminal on your local machine to run commands while you're other terminal is occupied with the output of a running process. The steps are the same as we just covered.
+**NOTE: You may want to open a second (or third!) SSH session in a different terminal on your local machine to run commands while you're other terminal is occupied with the output of a running process. The steps are the same as we just covered.**
 
 
 ## 5) Setup your EC2 instance and install `near-cli`
@@ -117,13 +114,10 @@ sudo npm install -g near-cli
 ```
 
 Set the environment to the correct network:
+**NOTE: Each time you create a new SSH session, ensure that you set the environment to the correct network.**
 ```
 export NEAR_ENV=shardnet
 ```
-
-**NOTE:** Each time you create a new SSH session, ensure that you set the environment to the correct network.
-
-Some basic NEAR-CLI commands include...
 
 Check validator proposals for entering the validator set:
 ```
@@ -204,18 +198,18 @@ git checkout <commit>
 ```
 
 Compile nearcore:
+**NOTE: Be patient as this will take several minutes at minimum.**
 ```
 cargo build -p neard --release --features shardnet
 ```
 
-**NOTE: Be patient as this will take several minutes at minimum.**
-
 Initialize the working directory for the necessary validator configuration files:
+**NOTE: Ensure you are in the `/nearcore` directory.**
 ```
 ./target/release/neard --home ~/.near init --chain-id shardnet --download-genesis
 ```
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180038822-d9f027b4-5eda-4fec-900a-0d10744f9672.png">
 
-**NOTE: Ensure you are in the `/nearcore` directory.**
 
 Replace the config.json file:
 ```
