@@ -87,7 +87,7 @@ You should now have remote access to an Ubuntu terminal on your EC2 instance!
 
 ## 5) Setup your EC2 instance and install `near-cli`
 
-The following steps are similar to those covered in [Challenge 1](https://github.com/near/stakewars-iii/blob/main/challenges/001.md)
+The following steps are a streamlined version of those covered in [Challenge 1](https://github.com/near/stakewars-iii/blob/main/challenges/001.md)
 
 Update your Ubunutu machine:
 ```
@@ -137,7 +137,7 @@ near validators next
 
 ## 6) Install Rust, Nearcore, Access Your Wallet, and Start the Validator
 
-The following steps are similar to those covered in [Challenge 2](https://github.com/near/stakewars-iii/blob/main/challenges/002.md)
+The following steps are a streamlined version of those covered in [Challenge 2](https://github.com/near/stakewars-iii/blob/main/challenges/002.md)
 
 We created a t2.xlarge EC2 instance which has the correct specifications (4-core CPU, 8GB RAM, and 500GB SSD) to run a NEAR chunk validator. If you want to check for yourself run in your terminal:
 
@@ -240,5 +240,83 @@ Since we don't have a GUI on our Ubuntu machine, copy and paste the link outputt
 
 Once the browsers loads to a refused to connect page, return to your SSH session and enter your shardnet accountId `xxxx.shardnet.near` under the line 'Enter it here'.
 
+Generate your validator key, where `<pool_id>` is equivalent to `<pool_name>.factory.shardnet.near`:
+```
+near generate-key <pool_id>
+```
 
+Copy this generate file to the ~/.near directory that you initialized above, replacing `<wallet_name>` with your shardnet wallet name:
+```
+cp ~/.near-credentials/shardnet/<wallet_name>.shardnet.near.json ~/.near/validator_key.json
+```
+
+Use the command `vim` to edit `validator_key.json`:
+```
+vim ~/.near/validator_key.json
+```
+
+1. In vim, hit `i` for `insert`, and replace the `private_key` key value with `secret_key`. Your file structure should similar to this:
+
+```
+{
+  "account_id": "xx.factory.shardnet.near",
+  "public_key": "ed25519:HeaBJ3xLgvZacQWmEctTeUqyfSU4SDEnEwckWxd92W2G",
+  "secret_key": "ed25519:****"
+}
+```
+
+2. Hit `esc` to exit the insert, `:` then `wq` to save and quit.
+
+Start the validator daemon:
+```
+target/release/neard run
+```
+
+Use a second SSH session or quit the terminal `ctrl + c` and run the following to setup the Systemd Command:
+```
+sudo vi /etc/systemd/system/neard.service
+```
+
+Use vim and the commands we learned above to edit this file, replacing each instance of `user` with `ubuntu`:
+```
+[Unit]
+Description=NEARd Daemon Service
+
+[Service]
+Type=simple
+User=<USER>
+#Group=near
+WorkingDirectory=/home/<USER>/.near
+ExecStart=/home/<USER>/nearcore/target/release/neard run
+Restart=on-failure
+RestartSec=30
+KillSignal=SIGINT
+TimeoutStopSec=45
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable neard and start neard:
+```
+sudo systemctl enable neard
+
+sudo systemctl start neard
+```
+
+Download ccze to prettify your output:
+```
+sudo apt install ccze
+```
+
+Run your prettified logs:
+```
+journalctl -n 100 -f -u neard | ccze -A
+```
+
+
+## 7) Mount a Staking Pool then Deposit and Stake NEAR on your validator
+
+The following steps are a streamlined version of those covered in [Challenge 3](https://github.com/near/stakewars-iii/blob/main/challenges/003.md)
 
