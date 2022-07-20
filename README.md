@@ -334,6 +334,9 @@ near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "<pool 
 Once that command is entered correctly, you should receive a true response back.
   
 Commands for depositing and staking, unstaking, and unstaking all NEAR:
+**NOTE: You must deposit and stake sufficient NEAR to cover the validator Seat Price or your node will not be included in the next validator set. You can find the current Seat Price here:[Shardnet Explorer(https://explorer.shardnet.near.org/)**
+  
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180091780-732887d1-5d72-40e4-bc01-d2e7ba79415b.png">
   
 ```
 near call <staking_pool_id> deposit_and_stake --amount <amount> --accountId <accountId> --gas=300000000000000
@@ -349,5 +352,8 @@ Pinging is necessary at each epoch to ensure reported rewards are current:
 near call <staking_pool_id> ping '{}' --accountId <accountId> --gas=300000000000000
 ```
   
-## 8) Monitoring Your Validator
-  
+Check [Shardnet Explorer](https://explorer.shardnet.near.org/) for your validator - it should be in a Proposal state awaiting to join the validator set in the next epoch. Congratulations, you have just set up a NEAR chunk validator!
+
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180092288-ca8bee6f-aed6-47f8-907f-aa24aae005cd.png">
+
+
