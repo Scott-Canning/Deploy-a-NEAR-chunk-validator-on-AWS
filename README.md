@@ -326,7 +326,7 @@ Deploy a new staking pool:
 near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "<pool id>", "owner_id": "<accountId>", "stake_public_key": "<public key>", "reward_fee_fraction": {"numerator": 5, "denominator": 100}, "code_hash":"DD428g9eqLL8fWUxv8QSpVFzyHi1Qd16P8ephYCTmMSZ"}' --accountId="<accountId>" --amount=30 --gas=300000000000000
 ```
 
-- staking_pool_id: use the `pool id` value before factory in your full account_id (<pool id>.factory.shardnet.near)
+- staking_pool_id: use the `<pool_id>` value before factory in your full account_id `<pool_id>.factory.shardnet.near`
 - owner_id: use your full shardnet wallet name, e.g.: `xxxx.shardnet.near`
 - stake_public_key: use the value found in the `validatory_key.json` file in `~/.near`
 - account_id: same value as `owner_id`
