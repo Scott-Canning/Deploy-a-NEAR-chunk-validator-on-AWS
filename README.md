@@ -259,7 +259,7 @@ vim ~/.near/validator_key.json
 
 ```
 {
-  "account_id": "xx.factory.shardnet.near",
+  "account_id": "xxxx.factory.shardnet.near",
   "public_key": "ed25519:HeaBJ3xLgvZacQWmEctTeUqyfSU4SDEnEwckWxd92W2G",
   "secret_key": "ed25519:****"
 }
@@ -314,9 +314,40 @@ Run your prettified logs:
 ```
 journalctl -n 100 -f -u neard | ccze -A
 ```
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180086916-be366afa-4b85-49cb-ad1a-523cf344a3fb.png">
 
 
-## 7) Mount a Staking Pool then Deposit and Stake NEAR on your validator
+## 7) Mount a Staking Pool, Depositing and Staking NEAR, and Pinging Your Validator
 
 The following steps are a streamlined version of those covered in [Challenge 3](https://github.com/near/stakewars-iii/blob/main/challenges/003.md)
 
+Deploy a new staking pool:
+```
+near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "<pool id>", "owner_id": "<accountId>", "stake_public_key": "<public key>", "reward_fee_fraction": {"numerator": 5, "denominator": 100}, "code_hash":"DD428g9eqLL8fWUxv8QSpVFzyHi1Qd16P8ephYCTmMSZ"}' --accountId="<accountId>" --amount=30 --gas=300000000000000
+```
+
+- staking_pool_id: use the `pool id` value before factory in your full account_id (<pool id>.factory.shardnet.near)
+- owner_id: use your full shardnet wallet name, e.g.: `xxxx.shardnet.near`
+- stake_public_key: use the value found in the `validatory_key.json` file in `~/.near`
+- account_id: same value as `owner_id`
+  
+Once that command is entered correctly, you should receive a true response back.
+  
+Commands for depositing and staking, unstaking, and unstaking all NEAR:
+  
+```
+near call <staking_pool_id> deposit_and_stake --amount <amount> --accountId <accountId> --gas=300000000000000
+ 
+near call <staking_pool_id> unstake '{"amount": "<amount yoctoNEAR>"}' --accountId <accountId> --gas=300000000000000
+  
+near call <staking_pool_id> unstake_all --accountId <accountId> --gas=300000000000000
+```
+
+Pinging is necessary at each epoch to ensure reported rewards are current:
+
+```
+near call <staking_pool_id> ping '{}' --accountId <accountId> --gas=300000000000000
+```
+  
+## 8) Monitoring Your Validator
+  
