@@ -334,7 +334,7 @@ near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "<pool 
 Once that command is entered correctly, you should receive a true response back.
   
 Commands for depositing and staking, unstaking, and unstaking all NEAR:
-**NOTE: You must deposit and stake sufficient NEAR to cover the validator Seat Price or your node will not be included in the next validator set. You can find the current Seat Price here:[Shardnet Explorer(https://explorer.shardnet.near.org/)**
+**NOTE: You must deposit and stake sufficient NEAR to cover the validator Seat Price or your node will not be included in the next validator set. You can find the current Seat Price here:[Shardnet Explorer](https://explorer.shardnet.near.org/)**
   
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/34758484/180091780-732887d1-5d72-40e4-bc01-d2e7ba79415b.png">
   
