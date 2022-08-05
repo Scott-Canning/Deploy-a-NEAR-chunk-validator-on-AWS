@@ -29,7 +29,7 @@ We’ll be using AWS to host our validator. If you don’t have an existing AWS 
 AWS provides a diverse set of on-demand cloud microservices. The company typically offers free tiers for most services but given that resource demands change based on your use case, a credit card is required at account initiation so keep it nearby.
 
 
-## 3) Set up and EC2 instance 
+## 3) Set up an EC2 instance 
 
 Once your account is verified, you’ve stored your credentials in a safe place, and you’re logged in, use the search bar at the top of the AWS portal to query for the ‘EC2’ service – this will let us set up a containerized server instance for your node.
 
